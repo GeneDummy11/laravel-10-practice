@@ -4,16 +4,18 @@
             User Avatar
         </h2>
 
+        <img src="{{ "/storage/$user->avatar" }}" alt="user avatar" />
+
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Update your account's avatar.
         </p>
-    </header>
 
-    @if (session('message'))
-        <div class="text-red-500">
-            {{ session('message') }}
-        </div>
-    @endif
+        @if (session('message'))
+            <p class="text-red-400">
+                {{ session('message') }}
+            </p>
+        @endif
+    </header>
 
     <form method="post" action="{{ route('profile.avatar') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
