@@ -10,7 +10,12 @@ class AvatarController extends Controller
 {
     public function update(UpdateAvatarRequest $request)
     {
-        $request->file('avatar')->store('avatars');
+        //store file path in a variable
+        $path = $request->file('avatar')->store('avatars');
+
+        //update avatar column
+        auth()->user()->update(['avatar' => storage_path('app')."/$path"]);
+
         return redirect(route('profile.edit'));
     }
 }
