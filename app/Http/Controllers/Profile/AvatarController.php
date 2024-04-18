@@ -10,6 +10,7 @@ class AvatarController extends Controller
 {
     public function update(UpdateAvatarRequest $request)
     {
-        dd($request->all());
+        $request->file('avatar')->store('avatars');
+        return redirect(route('profile.edit'));
     }
 }
